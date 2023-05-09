@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-contract Notary {
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract Notary is Ownable {
     struct NotarizedDigest {
         uint256 timestamp;
         bytes data;
@@ -9,7 +11,7 @@ contract Notary {
 
     mapping(bytes32 => NotarizedDigest) private notarizedDigests;
 
-    function store(bytes32 digest) external {
+    function store(bytes32 digest) public onlyOwner {
         require(notarizedDigests[digest].timestamp == 0, "Digest already notarized");
         notarizedDigests[digest] = NotarizedDigest(block.timestamp, "");
     }
