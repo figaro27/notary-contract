@@ -15,6 +15,11 @@ module.exports = {
       url: `https://sepolia.infura.io/v3/${process.env.INFURA_API_KEY}`,
       accounts: [process.env.PRIVATE_KEY]
     },
+    mumbai: {
+      url: `https://rpc-mumbai.maticvigil.com`,
+      chainId: 80001,
+      accounts: [process.env.PRIVATE_KEY]
+    },
     ethereum: {
       url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
       accounts: [process.env.PRIVATE_KEY],
